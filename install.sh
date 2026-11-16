@@ -48,4 +48,21 @@ cat > "$PLIST" <<EOF
 EOF
 
 launchctl bootstrap "gui/$(id -u)" "$PLIST"
+
+# Alias xm3on / xm3off en ~/.zshrc, dentro de un bloque marcado para poder reemplazarlo o quitarlo.
+ZSHRC="${ZSHRC:-$HOME/.zshrc}"
+START="# >>> xm3-release aliases >>>"
+END="# <<< xm3-release aliases <<<"
+touch "$ZSHRC"
+TMP=$(mktemp)
+awk -v s="$START" -v e="$END" '$0==s{skip=1} !skip{print} $0==e{skip=0}' "$ZSHRC" > "$TMP"
+cat >> "$TMP" <<EOF
+$START
+alias xm3off='$APP/Contents/MacOS/XM3Release --address $ADDRESS --release-now'
+alias xm3on='$APP/Contents/MacOS/XM3Release --address $ADDRESS --connect-now'
+$END
+EOF
+cat "$TMP" > "$ZSHRC" && rm -f "$TMP"   # cat > respeta si ~/.zshrc es un symlink
+echo "→ Alias xm3on / xm3off en $ZSHRC (abre una Terminal nueva o corre: source ~/.zshrc)"
+
 echo "✓ Instalado y corriendo. Si macOS pide permiso de Bluetooth para XM3Release, dale Permitir."
