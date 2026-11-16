@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleIdentifier</key>
+    <string>com.local.xm3-release</string>
+    <key>CFBundleName</key>
+    <string>XM3Release</string>
+    <key>CFBundleExecutable</key>
+    <string>XM3Release</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>LSUIElement</key>
+    <true/>
+    <key>LSMinimumSystemVersion</key>
+    <string>12.0</string>
+    <key>NSBluetoothAlwaysUsageDescription</key>
+    <string>Para desconectar los audífonos Sony WH-1000XM3 cuando la Mac se bloquea o se duerme.</string>
+</dict>
+</plist>
